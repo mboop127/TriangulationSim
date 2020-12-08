@@ -7,7 +7,7 @@ import matplotlib.patches as mpatches
 size = 10000 #voterbase size
 center = 0 #starting political center
 deviation = 3 #starting ideological deviation
-LeftPostition = 1 #starting ideology of left party, must always be greater than right position
+LeftPosition = 1 #starting ideology of left party, must always be greater than right position
 RightPosition = -2 #starting ideology of right party
 ElectionGravity = .1 #shift in population's ideology toward party positions during election
 LeftWinGravity = .05 #shift in population's ideology toward left party positions after win
@@ -39,15 +39,15 @@ for runs in range(trials):
     for cycle in range(elections):
 
         #triangulation (shifts party/ies to center)
-        if LeftPostition > (sum(pop)/len(pop)):
-            LeftPostition = LeftPostition - TriangulationShift
+        if LeftPosition > (sum(pop)/len(pop)):
+            LeftPosition = LeftPosition - TriangulationShift
         elif LeftPostition < (sum(pop)/len(pop)):
-            LeftPostition = LeftPostition + TriangulationShift
+            LeftPosition = LeftPosition + TriangulationShift
 
         #if RightPosition < (sum(pop)/len(pop)):
-        #    LeftPostition = LeftPostition + TriangulationShift
+        #    RightPosition = RightPosition + TriangulationShift
         #elif RightPosition > (sum(pop)/len(pop)):
-        #    LeftPostition = LeftPostition - TriangulationShift
+        #    RightPosition = RightPosition - TriangulationShift
 
         #shift calc (natural ideological shift)
         for i in range(len(pop)):
@@ -55,13 +55,13 @@ for runs in range(trials):
 
         #election gravity calc (population ideology shifts according to campaigns)
         for i in range(len(pop)):
-            pop[i] = pop[i] + (ElectionGravity * LeftPostition) + (ElectionGravity * RightPosition)
+            pop[i] = pop[i] + (ElectionGravity * LeftPosition) + (ElectionGravity * RightPosition)
 
 
         #election
         rvotes = 0
         for i in range(len(pop)):
-            left = abs(pop[i] - LeftPostition) + randomness * random.random() #measures ideological difference from the left
+            left = abs(pop[i] - LeftPosition) + randomness * random.random() #measures ideological difference from the left
             right = abs(pop[i] - RightPosition) + randomness * random.random() #measures ideological difference from the right
             if right < left:
                 rvotes = rvotes + 1
@@ -80,7 +80,7 @@ for runs in range(trials):
         else:
             #win gravity (models that each party uses its wins to shift the public towards the right/left)
             for i in range(len(pop)):
-                pop[i] = pop[i] + (LeftWinGravity * LeftPostition)
+                pop[i] = pop[i] + (LeftWinGravity * LeftPosition)
 
             #plot stuff
             Rwin.append(0)

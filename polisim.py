@@ -41,7 +41,7 @@ for runs in range(trials):
         #triangulation (shifts party/ies to center)
         if LeftPosition > (sum(pop)/len(pop)):
             LeftPosition = LeftPosition - TriangulationShift
-        elif LeftPostition < (sum(pop)/len(pop)):
+        elif LeftPosition < (sum(pop)/len(pop)):
             LeftPosition = LeftPosition + TriangulationShift
 
         #if RightPosition < (sum(pop)/len(pop)):

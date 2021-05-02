@@ -90,7 +90,7 @@ for runs in range(trials):
 
         meanideology.append(sum(pop)/len(pop))
         Xaxis.append(cycle)
-        LeftPositionList.append(LeftPostition)
+        LeftPositionList.append(LeftPosition)
         RightPositionList.append(RightPosition)
 
 
